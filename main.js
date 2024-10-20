@@ -19,9 +19,9 @@ const App = {
         }
 
         // 兵種一覧
-        this.heisyuList.push("専用兵種");
+        this.heisyuList.push({name: "専用兵種", isDlc: false});
         for (const heisyu of kihonHeisyuList) {
-            this.heisyuList.push(heisyu.name);
+            this.heisyuList.push(heisyu);
         }
     },
     methods: {

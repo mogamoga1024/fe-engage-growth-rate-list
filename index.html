@@ -29,9 +29,9 @@
       <select>
         <option value="unselected">未指定</option>
         <option
-          v-for="heisyuName in heisyuList"
-          :value="heisyuName">
-          {{ heisyuName }}
+          v-for="heisyu in heisyuList"
+          :value="heisyu">
+          {{ heisyu.name + (heisyu.isDlc ? "(DLC)" : "") }}
         </option>
       </select>
     </div>

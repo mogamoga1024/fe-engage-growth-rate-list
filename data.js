@@ -244,11 +244,11 @@ const kihonHeisyuList = [
         isDlc: false,
     },
     {
-        name: "エンチャント(DLC)",
+        name: "エンチャント",
         isDlc: true,
     },
     {
-        name: "マージカノン(DLC)",
+        name: "マージカノン",
         isDlc: true,
     },
 ];
