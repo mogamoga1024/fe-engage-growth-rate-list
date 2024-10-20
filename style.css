@@ -3,3 +3,17 @@
   display: none !important;
 }
 
+#app {
+  padding: 16px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+}
+
+.option-name {
+  width: 80px;
+}
+
+

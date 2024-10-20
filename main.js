@@ -2,11 +2,22 @@
 const App = {
     data() {
         return {
-            // todo
+            unitGroups: {},
+            heisyuList: [
+                "aaa",
+                "bbb"
+            ],
         };
     },
     created() {
-        // todo
+        let groupName = "";
+        for (const unit of unitList) {
+            if (groupName !== unit.kuni) {
+                groupName = unit.kuni;
+                this.unitGroups[groupName] = [];
+            }
+            this.unitGroups[groupName].push(unit.name);
+        }
     },
     methods: {
         // todo

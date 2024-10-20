@@ -9,9 +9,42 @@
 </head>
 <body>
   <div id="app" v-cloak>
-    
+    <div class="option">
+      <div class="option-name">ユニット</div>
+      <select>
+        <option value="all">すべて</option>
+        <optgroup
+          v-for="(unitList, groupName) in unitGroups"
+          :label="groupName">
+          <option
+            v-for="unitName in unitList"
+            :value="unitName">
+            {{ unitName }}
+          </option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="option">
+      <div class="option-name">兵種</div>
+      <select>
+        <option value="unselected">未指定</option>
+        <option
+          v-for="heisyuName in heisyuList"
+          :value="heisyuName">
+          {{ heisyuName }}
+        </option>
+      </select>
+    </div>
+    <div class="option">
+      <div class="option-name">表示内容</div>
+      <select>
+        <option value="seityouritu">成長率</option>
+        <option value="jougenti">上限値</option>
+      </select>
+    </div>
   </div>
 
+  <script src="data.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
