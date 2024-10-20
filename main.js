@@ -1,6 +1,4 @@
 
-let unitName = "すべて";
-let heisyuName = "未指定";
 let hyoujiNaiyou = "成長率";
 
 const App = {
@@ -8,6 +6,8 @@ const App = {
         return {
             unitGroups: {},
             heisyuList: [],
+            unitName: "すべて",
+            heisyuName: "未指定",
             sortKoumoku: "",
             sortRule: "",
             result: []
@@ -35,12 +35,18 @@ const App = {
     },
     methods: {
         onChangeUnit(e) {
-            unitName = e.target.value;
+            this.unitName = e.target.value;
+            if (this.heisyuName === "すべて") {
+                this.heisyuName = "未指定";
+            }
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
         onChangeHeisyu(e) {
-            heisyuName = e.target.value;
+            this.heisyuName = e.target.value;
+            if (this.unitName === "すべて") {
+                this.unitName = "未指定";
+            }
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
@@ -68,12 +74,12 @@ const App = {
         search() {
             // ユニットデータ取得
             let tmpUnitList = [];
-            if (unitName === "すべて") {
+            if (this.unitName === "すべて") {
                 tmpUnitList = unitList;
             }
             else {
                 for (const unit of unitList) {
-                    if (unit.name === unitName) {
+                    if (unit.name === this.unitName) {
                         tmpUnitList.push(unit);
                         break;
                     }

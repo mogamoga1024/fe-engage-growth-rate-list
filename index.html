@@ -14,9 +14,9 @@
     <h1>FEエンゲージ成長率一覧</h1>
     <div class="option">
       <div class="option-name">ユニット</div>
-      <select @change="onChangeUnit">
+      <select :value="unitName" @change="onChangeUnit">
         <option value="未指定">未指定</option>
-        <option value="すべて" selected>すべて</option>
+        <option value="すべて">すべて</option>
         <optgroup
           v-for="(unitList, groupName) in unitGroups"
           :label="groupName">
@@ -30,7 +30,7 @@
     </div>
     <div class="option">
       <div class="option-name">兵種</div>
-      <select @change="onChangeHeisyu">
+      <select :value="heisyuName" @change="onChangeHeisyu">
         <option value="未指定">未指定</option>
         <option value="すべて">すべて</option>
         <option
@@ -49,28 +49,30 @@
     </div>
 
     <div id="result">
-      ヘッダーを押すとソートできます
-      <table v-if="result.length > 0">
-        <tr>
-          <th v-for="koumoku in ['名前', 'HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
-            @click="onClickKoumoku(koumoku)">
-            {{koumoku + (sortKoumoku === koumoku ? (sortRule === "昇順" ? "↓" : (sortRule === "降順" ? "↑" : "")) : "")}}
-          </th>
-        </tr>
-        <tr v-for="row in result">
-          <td>{{row["name"]}}</td>
-          <td>{{row["HP"]}}</td>
-          <td>{{row["力"]}}</td>
-          <td>{{row["魔力"]}}</td>
-          <td>{{row["技"]}}</td>
-          <td>{{row["速さ"]}}</td>
-          <td>{{row["守備"]}}</td>
-          <td>{{row["魔防"]}}</td>
-          <td>{{row["幸運"]}}</td>
-          <td>{{row["体格"]}}</td>
-          <td>{{row["合計"]}}</td>
-        </tr>
-      </table>
+      <div v-if="result.length > 0">
+        ヘッダーを押すとソートできます
+        <table>
+          <tr>
+            <th v-for="koumoku in ['名前', 'HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
+              @click="onClickKoumoku(koumoku)">
+              {{koumoku + (sortKoumoku === koumoku ? (sortRule === "昇順" ? "↓" : (sortRule === "降順" ? "↑" : "")) : "")}}
+            </th>
+          </tr>
+          <tr v-for="row in result">
+            <td>{{row["name"]}}</td>
+            <td>{{row["HP"]}}</td>
+            <td>{{row["力"]}}</td>
+            <td>{{row["魔力"]}}</td>
+            <td>{{row["技"]}}</td>
+            <td>{{row["速さ"]}}</td>
+            <td>{{row["守備"]}}</td>
+            <td>{{row["魔防"]}}</td>
+            <td>{{row["幸運"]}}</td>
+            <td>{{row["体格"]}}</td>
+            <td>{{row["合計"]}}</td>
+          </tr>
+        </table>
+      </div>
       <div v-else>
         データがないです。
       </div>
