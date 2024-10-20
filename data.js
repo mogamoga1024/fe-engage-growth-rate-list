@@ -2,167 +2,167 @@
 const unitList = [
     {
         kuni: "リトス",
-        name: "主人公"
+        name: "主人公",
     },
     {
         kuni: "リトス",
-        name: "ヴァンドレ"
+        name: "ヴァンドレ",
     },
     {
         kuni: "リトス",
-        name: "クラン"
+        name: "クラン",
     },
     {
         kuni: "リトス",
-        name: "フラン"
+        name: "フラン",
     },
     {
         kuni: "フィレネ",
-        name: "アルフレッド"
+        name: "アルフレッド",
     },
     {
         kuni: "フィレネ",
-        name: "セリーヌ"
+        name: "セリーヌ",
     },
     {
         kuni: "フィレネ",
-        name: "ブシュロン"
+        name: "ブシュロン",
     },
     {
         kuni: "フィレネ",
-        name: "エーティエ"
+        name: "エーティエ",
     },
     {
         kuni: "フィレネ",
-        name: "ルイ"
+        name: "ルイ",
     },
     {
         kuni: "フィレネ",
-        name: "クロエ"
+        name: "クロエ",
     },
     {
         kuni: "フィレネ",
-        name: "ジャン"
+        name: "ジャン",
     },
     {
         kuni: "ブロディア",
-        name: "ディアマンド"
+        name: "ディアマンド",
     },
     {
         kuni: "ブロディア",
-        name: "スタルーク"
+        name: "スタルーク",
     },
     {
         kuni: "ブロディア",
-        name: "アンバー"
+        name: "アンバー",
     },
     {
         kuni: "ブロディア",
-        name: "ジェーデ"
+        name: "ジェーデ",
     },
     {
         kuni: "ブロディア",
-        name: "ラピス"
+        name: "ラピス",
     },
     {
         kuni: "ブロディア",
-        name: "シトリニカ"
+        name: "シトリニカ",
     },
     {
         kuni: "ブロディア",
-        name: "ユナカ"
+        name: "ユナカ",
     },
     {
         kuni: "ブロディア",
-        name: "ザフィーア"
+        name: "ザフィーア",
     },
     {
         kuni: "イルシオン",
-        name: "アイビー"
+        name: "アイビー",
     },
     {
         kuni: "イルシオン",
-        name: "オルテンシア"
+        name: "オルテンシア",
     },
     {
         kuni: "イルシオン",
-        name: "ゼルコバ"
+        name: "ゼルコバ",
     },
     {
         kuni: "イルシオン",
-        name: "カゲツ"
+        name: "カゲツ",
     },
     {
         kuni: "イルシオン",
-        name: "ロサード"
+        name: "ロサード",
     },
     {
         kuni: "イルシオン",
-        name: "ゴルドマリー"
+        name: "ゴルドマリー",
     },
     {
         kuni: "イルシオン",
-        name: "アンナ"
+        name: "アンナ",
     },
     {
         kuni: "イルシオン",
-        name: "リンデン"
+        name: "リンデン",
     },
     {
         kuni: "ソルム",
-        name: "ミスティラ"
+        name: "ミスティラ",
     },
     {
         kuni: "ソルム",
-        name: "フォガート"
+        name: "フォガート",
     },
     {
         kuni: "ソルム",
-        name: "メリン"
+        name: "メリン",
     },
     {
         kuni: "ソルム",
-        name: "パネトネ"
+        name: "パネトネ",
     },
     {
         kuni: "ソルム",
-        name: "パンドロ"
+        name: "パンドロ",
     },
     {
         kuni: "ソルム",
-        name: "ボネ"
+        name: "ボネ",
     },
     {
         kuni: "ソルム",
-        name: "セアダス"
+        name: "セアダス",
     },
     {
         kuni: "その他",
-        name: "ヴェイル"
+        name: "ヴェイル",
     },
     {
         kuni: "その他",
-        name: "モーヴ"
+        name: "モーヴ",
     },
     {
         kuni: "DLC",
-        name: "エル"
+        name: "エル",
     },
     {
         kuni: "DLC",
-        name: "ラファール"
+        name: "ラファール",
     },
     {
         kuni: "DLC",
-        name: "セレスティア"
+        name: "セレスティア",
     },
     {
         kuni: "DLC",
-        name: "グレゴリー"
+        name: "グレゴリー",
     },
     {
         kuni: "DLC",
-        name: "マデリーン"
+        name: "マデリーン",
     },
 ];
 
