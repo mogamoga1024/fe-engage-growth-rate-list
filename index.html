@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FEエンゲージ成長率ツール</title>
+  <title>FEエンゲージ成長率一覧</title>
   <link rel="stylesheet" href="style.css">
   <script src="vendor/vue.js"></script>
 </head>
 <body>
   <div id="app" v-cloak>
+    <h1>FEエンゲージ成長率一覧</h1>
     <div class="option">
       <div class="option-name">ユニット</div>
-      <select>
-        <option value="all">すべて</option>
+      <select @change="onChangeUnit">
+        <option value="未指定">未指定</option>
+        <option value="すべて" selected>すべて</option>
         <optgroup
           v-for="(unitList, groupName) in unitGroups"
           :label="groupName">
@@ -26,8 +28,9 @@
     </div>
     <div class="option">
       <div class="option-name">兵種</div>
-      <select>
-        <option value="unselected">未指定</option>
+      <select @change="onChangeHeisyu">
+        <option value="未指定">未指定</option>
+        <option value="すべて">すべて</option>
         <option
           v-for="heisyu in heisyuList"
           :value="heisyu">
@@ -37,10 +40,45 @@
     </div>
     <div class="option">
       <div class="option-name">表示内容</div>
-      <select>
+      <select @change="onChangeHyoujiNaiyou">
         <option value="seityouritu">成長率</option>
         <option value="jougenti">上限値</option>
       </select>
+    </div>
+
+    <div id="result">
+      ヘッダーを押すとソートできます
+      <table v-if="result.length > 0">
+        <tr>
+          <th>名前</th>
+          <th>HP</th>
+          <th>力</th>
+          <th>魔力</th>
+          <th>技</th>
+          <th>速さ</th>
+          <th>守備</th>
+          <th>魔防</th>
+          <th>幸運</th>
+          <th>体格</th>
+          <th>合計</th>
+        </tr>
+        <tr v-for="row in result">
+          <td>{{row["name"]}}</td>
+          <td>{{row["HP"]}}</td>
+          <td>{{row["力"]}}</td>
+          <td>{{row["魔力"]}}</td>
+          <td>{{row["技"]}}</td>
+          <td>{{row["速さ"]}}</td>
+          <td>{{row["守備"]}}</td>
+          <td>{{row["魔防"]}}</td>
+          <td>{{row["幸運"]}}</td>
+          <td>{{row["体格"]}}</td>
+          <td>{{row["合計"]}}</td>
+        </tr>
+      </table>
+      <div v-else>
+        データがないです。
+      </div>
     </div>
   </div>
 

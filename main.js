@@ -1,4 +1,8 @@
 
+let unitName = "すべて";
+let heisyuName = "未指定";
+let hyoujiNaiyou = "成長率";
+
 const App = {
     data() {
         return {
@@ -23,9 +27,53 @@ const App = {
         for (const heisyu of kihonHeisyuList) {
             this.heisyuList.push(heisyu);
         }
+
+        // 初回検索
+        this.search();
     },
     methods: {
-        // todo
+        onChangeUnit(e) {
+            unitName = e.target.value;
+            this.search();
+        },
+        onChangeHeisyu(e) {
+            heisyuName = e.target.value;
+            this.search();
+        },
+        onChangeHyoujiNaiyou(e) {
+            hyoujiNaiyou = e.target.value;
+            this.search();
+        },
+        search() {
+            // ユニットデータ取得
+            let tmpUnitList = [];
+            if (unitName === "すべて") {
+                tmpUnitList = unitList;
+            }
+            else {
+                for (const unit of unitList) {
+                    if (unit.name === unitName) {
+                        tmpUnitList.push(unit);
+                        break;
+                    }
+                }
+            }
+
+            // TODO 兵種データ取得
+
+            // 表示用にデータを加工する
+            this.result = [];
+            for (const unit of tmpUnitList) {
+                let data = null;
+                if (hyoujiNaiyou === "成長率") {
+                    data = {name: unit.name, ...unit.seityouritu};
+                }
+                else if (hyoujiNaiyou === "上限値") {
+                    data = {name: unit.name, ...unit.jougenti};
+                }
+                this.result.push(data);
+            }
+        },
     }
 };
 
