@@ -15,7 +15,7 @@
     <div class="option">
       <div class="option-name">ユニット</div>
       <select :value="unitName" @change="onChangeUnit">
-        <option value="未指定">未指定</option>
+        <option value="なし">なし</option>
         <option value="すべて">すべて</option>
         <optgroup
           v-for="(unitList, groupName) in unitGroups"
@@ -31,8 +31,10 @@
     <div class="option">
       <div class="option-name">兵種</div>
       <select :value="heisyuName" @change="onChangeHeisyu">
-        <option value="未指定">未指定</option>
+        <option value="なし">なし</option>
         <option value="すべて">すべて</option>
+        <option value="専用兵種">専用兵種</option>
+        <option value="専用兵種以外">専用兵種以外</option>
         <option
           v-for="heisyu in heisyuList"
           :value="heisyu">

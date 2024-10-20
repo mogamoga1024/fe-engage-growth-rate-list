@@ -7,7 +7,7 @@ const App = {
             unitGroups: {},
             heisyuList: [],
             unitName: "すべて",
-            heisyuName: "未指定",
+            heisyuName: "なし",
             sortKoumoku: "",
             sortRule: "",
             result: []
@@ -25,7 +25,6 @@ const App = {
         }
 
         // 兵種一覧
-        this.heisyuList.push({name: "専用兵種", isDlc: false});
         for (const heisyu of kihonHeisyuList) {
             this.heisyuList.push(heisyu);
         }
@@ -37,7 +36,7 @@ const App = {
         onChangeUnit(e) {
             this.unitName = e.target.value;
             if (this.heisyuName === "すべて") {
-                this.heisyuName = "未指定";
+                this.heisyuName = "なし";
             }
             this.sortKoumoku = this.sortRule = "";
             this.search();
@@ -45,7 +44,7 @@ const App = {
         onChangeHeisyu(e) {
             this.heisyuName = e.target.value;
             if (this.unitName === "すべて") {
-                this.unitName = "未指定";
+                this.unitName = "なし";
             }
             this.sortKoumoku = this.sortRule = "";
             this.search();
@@ -72,11 +71,32 @@ const App = {
             this.search();
         },
         search() {
-            // ユニットデータ取得
             let tmpUnitList = [];
-            if (this.unitName === "すべて") {
+
+            // 兵種データをすべて表示する場合はユニットのように扱う
+            if (this.heisyuName === "すべて") {
+                tmpUnitList = senyouHeisyuList.concat(kihonHeisyuList);
+            }
+            else if (this.unitName === "なし") {
+                if (this.heisyuName === "専用兵種") {
+                    tmpUnitList = senyouHeisyuList;
+                }
+                else if (this.heisyuName === "専用兵種以外") {
+                    tmpUnitList = kihonHeisyuList;
+                }
+                else if (this.heisyuName === "なし") {
+                    this.result = [];
+                    return;
+                }
+                else {
+                    // todo
+                }
+            }
+            // すべてのユニットデータ取得
+            else if (this.unitName === "すべて") {
                 tmpUnitList = unitList;
             }
+            // 個別のユニットデータ取得
             else {
                 for (const unit of unitList) {
                     if (unit.name === this.unitName) {
@@ -84,9 +104,8 @@ const App = {
                         break;
                     }
                 }
+                // TODO 兵種データ取得
             }
-
-            // TODO 兵種データ取得
 
             // 表示用にデータを加工する
             const result = [];
