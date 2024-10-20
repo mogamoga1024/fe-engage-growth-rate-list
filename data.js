@@ -166,5 +166,149 @@ const unitList = [
     },
 ];
 
+const kihonHeisyuList = [
+    {
+        name: "ソードマスター",
+        isDlc: false,
+    },
+    {
+        name: "ブレイブヒーロー",
+        isDlc: false,
+    },
+    {
+        name: "ハルバーディア",
+        isDlc: false,
+    },
+    {
+        name: "ロイヤルナイト",
+        isDlc: false,
+    },
+    {
+        name: "ベルセルク",
+        isDlc: false,
+    },
+    {
+        name: "ウォーリアー",
+        isDlc: false,
+    },
+    {
+        name: "スナイパー",
+        isDlc: false,
+    },
+    {
+        name: "ボウナイト",
+        isDlc: false,
+    },
+    {
+        name: "ジェネラル",
+        isDlc: false,
+    },
+    {
+        name: "グレートナイト",
+        isDlc: false,
+    },
+    {
+        name: "パラディン",
+        isDlc: false,
+    },
+    {
+        name: "ウルフナイト",
+        isDlc: false,
+    },
+    {
+        name: "グリフォンナイト",
+        isDlc: false,
+    },
+    {
+        name: "ドラゴンナイト",
+        isDlc: false,
+    },
+    {
+        name: "セイジ",
+        isDlc: false,
+    },
+    {
+        name: "マージナイト",
+        isDlc: false,
+    },
+    {
+        name: "マスターモンク",
+        isDlc: false,
+    },
+    {
+        name: "ハイプリースト",
+        isDlc: false,
+    },
+    {
+        name: "シーフ",
+        isDlc: false,
+    },
+    {
+        name: "エンチャント(DLC)",
+        isDlc: true,
+    },
+    {
+        name: "マージカノン(DLC)",
+        isDlc: true,
+    },
+];
 
+const senyouHeisyuList = [
+    {
+        name: "神竜ノ王",
+        isDlc: false,
+    },
+    {
+        name: "アヴニール",
+        isDlc: false,
+    },
+    {
+        name: "フロラージュ",
+        isDlc: false,
+    },
+    {
+        name: "スュクセサール",
+        isDlc: false,
+    },
+    {
+        name: "ティラユール",
+        isDlc: false,
+    },
+    {
+        name: "リンドブルム",
+        isDlc: false,
+    },
+    {
+        name: "スレイプニル",
+        isDlc: false,
+    },
+    {
+        name: "ピッチフォーク",
+        isDlc: false,
+    },
+    {
+        name: "クピードー",
+        isDlc: false,
+    },
+    {
+        name: "ダンサー",
+        isDlc: false,
+    },
+    {
+        name: "邪竜ノ娘(ヴェイル)",
+        isDlc: false,
+    },
+    {
+        name: "邪竜ノ娘(エル)",
+        isDlc: true,
+    },
+    {
+        name: "邪竜ノ子",
+        isDlc: true,
+    },
+    {
+        name: "メリュジーヌ",
+        isDlc: true,
+    },
+];
 
