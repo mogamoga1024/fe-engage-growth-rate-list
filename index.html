@@ -6,6 +6,8 @@
   <title>FEエンゲージ成長率一覧</title>
   <link rel="stylesheet" href="style.css">
   <script src="vendor/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/viewport-extra@1.0.3/dist/viewport-extra.min.js"></script>
+  <script>new ViewportExtra(375)</script>
 </head>
 <body>
   <div id="app" v-cloak>
@@ -50,17 +52,10 @@
       ヘッダーを押すとソートできます
       <table v-if="result.length > 0">
         <tr>
-          <th>名前</th>
-          <th>HP</th>
-          <th>力</th>
-          <th>魔力</th>
-          <th>技</th>
-          <th>速さ</th>
-          <th>守備</th>
-          <th>魔防</th>
-          <th>幸運</th>
-          <th>体格</th>
-          <th>合計</th>
+          <th v-for="koumoku in ['名前', 'HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
+            @click="onClickKoumoku(koumoku)">
+            {{koumoku + (sortKoumoku === koumoku ? (sortRule === "昇順" ? "↓" : (sortRule === "降順" ? "↑" : "")) : "")}}
+          </th>
         </tr>
         <tr v-for="row in result">
           <td>{{row["name"]}}</td>

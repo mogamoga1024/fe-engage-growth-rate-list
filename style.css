@@ -29,10 +29,19 @@ table, th, td {
   border: 1px solid #666;
 }
 
+table {
+  margin-top: 4px;
+}
+
 th {
   padding: 4px;
   background-color: #f9f9f9;
   text-align: center;
+  user-select: none;
+}
+
+th:not(:first-of-type) {
+  cursor: pointer;
 }
 
 td:first-of-type {
@@ -42,7 +51,7 @@ td:first-of-type {
 }
 
 td:not(:first-of-type) {
-  min-width: 30px;
+  min-width: 48px;
   padding: 4px;
   background-color: #eaf6f8;
   text-align: right;

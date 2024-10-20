@@ -8,6 +8,8 @@ const App = {
         return {
             unitGroups: {},
             heisyuList: [],
+            sortKoumoku: "",
+            sortRule: "",
             result: []
         };
     },
@@ -34,14 +36,33 @@ const App = {
     methods: {
         onChangeUnit(e) {
             unitName = e.target.value;
+            this.sortKoumoku = this.sortRule = "";
             this.search();
         },
         onChangeHeisyu(e) {
             heisyuName = e.target.value;
+            this.sortKoumoku = this.sortRule = "";
             this.search();
         },
         onChangeHyoujiNaiyou(e) {
             hyoujiNaiyou = e.target.value;
+            this.sortKoumoku = this.sortRule = "";
+            this.search();
+        },
+        onClickKoumoku(koumoku) {
+            if (this.sortKoumoku !== koumoku) {
+                this.sortRule = "";
+            }
+            this.sortKoumoku = koumoku;
+            if (this.sortRule === "") {
+                this.sortRule = "降順";
+            }
+            else if (this.sortRule === "降順") {
+                this.sortRule = "昇順";
+            }
+            else {
+                this.sortRule = "";
+            }
             this.search();
         },
         search() {
@@ -62,7 +83,7 @@ const App = {
             // TODO 兵種データ取得
 
             // 表示用にデータを加工する
-            this.result = [];
+            const result = [];
             for (const unit of tmpUnitList) {
                 let data = null;
                 if (hyoujiNaiyou === "成長率") {
@@ -71,7 +92,23 @@ const App = {
                 else if (hyoujiNaiyou === "上限値") {
                     data = {name: unit.name, ...unit.jougenti};
                 }
-                this.result.push(data);
+                result.push(data);
+            }
+            if (this.sortKoumoku === "" || this.sortRule === "") {
+                this.result = result;
+            }
+            else {
+                this.result = result.sort((a, b) => {
+                    if (this.sortRule === "昇順") {
+                        return a[this.sortKoumoku] - b[this.sortKoumoku];
+                    }
+                    else if (this.sortRule === "降順") {
+                        return b[this.sortKoumoku] - a[this.sortKoumoku];
+                    }
+                    else {
+                        return 0;
+                    }
+                });
             }
         },
     }
