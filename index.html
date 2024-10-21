@@ -13,6 +13,14 @@
   <div id="app" v-cloak>
     <h1>FEエンゲージ成長率一覧</h1>
     <div class="option">
+      <div class="option-name">対象</div>
+      <select :value="taisyou" @change="onChangeTaisyou">
+        <option value="全ユニット">全ユニット</option>
+        <option value="全兵種">全兵種</option>
+        <option value="1ユニット×全兵種">1ユニット×全兵種</option>
+      </select>
+    </div>
+    <div class="option">
       <div class="option-name">ユニット</div>
       <select :value="unitName" @change="onChangeUnit">
         <option value="なし">なし</option>

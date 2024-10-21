@@ -6,6 +6,7 @@ const App = {
         return {
             unitGroups: {},
             heisyuList: [],
+            taisyou: "全ユニット",
             unitName: "すべて",
             heisyuName: "なし",
             sortKoumoku: "",
@@ -33,6 +34,12 @@ const App = {
         this.search();
     },
     methods: {
+        onChangeTaisyou(e) {
+            this.taisyou = e.target.value;
+            // todo unit heisyu
+            this.sortKoumoku = this.sortRule = "";
+            this.search();
+        },
         onChangeUnit(e) {
             this.unitName = e.target.value;
             if (this.heisyuName === "すべて") {
