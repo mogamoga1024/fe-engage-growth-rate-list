@@ -5,10 +5,9 @@ const App = {
     data() {
         return {
             unitGroups: {},
-            heisyuList: [],
             taisyou: "全ユニット",
-            unitName: "すべて",
-            heisyuName: "なし",
+            unitName: "主人公",
+            heisyuName: "すべて",
             sortKoumoku: "",
             sortRule: "",
             result: []
@@ -25,34 +24,22 @@ const App = {
             this.unitGroups[groupName].push(unit.name);
         }
 
-        // 兵種一覧
-        for (const heisyu of kihonHeisyuList) {
-            this.heisyuList.push(heisyu);
-        }
-
         // 初回検索
         this.search();
     },
     methods: {
         onChangeTaisyou(e) {
             this.taisyou = e.target.value;
-            // todo unit heisyu
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
         onChangeUnit(e) {
             this.unitName = e.target.value;
-            if (this.heisyuName === "すべて") {
-                this.heisyuName = "なし";
-            }
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
         onChangeHeisyu(e) {
             this.heisyuName = e.target.value;
-            if (this.unitName === "すべて") {
-                this.unitName = "なし";
-            }
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
@@ -83,21 +70,6 @@ const App = {
             // 兵種データをすべて表示する場合はユニットのように扱う
             if (this.heisyuName === "すべて") {
                 tmpUnitList = senyouHeisyuList.concat(kihonHeisyuList);
-            }
-            else if (this.unitName === "なし") {
-                if (this.heisyuName === "専用兵種") {
-                    tmpUnitList = senyouHeisyuList;
-                }
-                else if (this.heisyuName === "専用兵種以外") {
-                    tmpUnitList = kihonHeisyuList;
-                }
-                else if (this.heisyuName === "なし") {
-                    this.result = [];
-                    return;
-                }
-                else {
-                    // todo
-                }
             }
             // すべてのユニットデータ取得
             else if (this.unitName === "すべて") {
