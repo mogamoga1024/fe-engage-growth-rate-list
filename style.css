@@ -8,12 +8,6 @@
   padding: 0 16px 16px;
 }
 
-@media screen and (max-width: 480px) {
-  #app {
-    padding: 0 0 16px;
-  }
-}
-
 .option {
   display: flex;
   align-items: center;

@@ -1,0 +1,35 @@
+
+@media screen and (max-width: 480px) {
+  body {
+    margin: 0;
+  }
+
+  #app {
+    padding: 0 8px 32px;
+  }
+
+  table {
+    font-size: 0.5rem;
+  }
+
+  th {
+    padding: 2px;
+    background-color: #f9f9f9;
+    text-align: center;
+    user-select: none;
+  }
+
+  td:first-of-type {
+    min-width: 70px;
+    padding: 2px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  td:not(:first-of-type) {
+    min-width: 24px;
+    padding: 2px;
+    background-color: #eaf6f8;
+    text-align: right;
+  }
+}
