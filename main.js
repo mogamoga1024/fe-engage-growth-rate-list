@@ -59,6 +59,9 @@ const App = {
             this.search();
         },
         onClickKoumoku(koumoku) {
+            if (koumoku === "名前") {
+                return;
+            }
             if (this.sortKoumoku !== koumoku) {
                 this.sortRule = "";
             }
