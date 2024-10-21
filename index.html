@@ -44,6 +44,13 @@
       </select>
     </div>
     <div class="option">
+      <div class="option-name">DLC</div>
+      <select :value="dlc" @change="onChangeDlc">
+        <option value="あり">あり</option>
+        <option value="なし">なし</option>
+      </select>
+    </div>
+    <div class="option">
       <div class="option-name">表示内容</div>
       <select :value="hyoujiNaiyou" @change="onChangeHyoujiNaiyou">
         <option value="成長率">成長率</option>

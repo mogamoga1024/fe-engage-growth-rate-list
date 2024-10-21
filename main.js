@@ -6,6 +6,7 @@ const App = {
             taisyou: "全ユニット",
             unitName: "主人公",
             heisyuName: "すべて",
+            dlc: "あり",
             hyoujiNaiyou: "成長率",
             sortKoumoku: "",
             sortRule: "",
@@ -47,6 +48,11 @@ const App = {
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
+        onChangeDlc(e) {
+            this.dlc = e.target.value;
+            this.sortKoumoku = this.sortRule = "";
+            this.search();
+        },
         onChangeHyoujiNaiyou(e) {
             this.hyoujiNaiyou = e.target.value;
             this.sortKoumoku = this.sortRule = "";
@@ -74,6 +80,9 @@ const App = {
             // 対象
             if (this.taisyou === "全ユニット") {
                 rowList = unitList;
+                if (this.dlc === "なし") {
+                    rowList = rowList.filter(u => u.kuni !== "DLC");
+                }
             }
             else if (this.taisyou === "全兵種") {
                 if (this.heisyuName === "すべて") {
@@ -81,6 +90,9 @@ const App = {
                 }
                 else /*if (this.heisyuName === "専門兵種以外")*/ {
                     rowList = kihonHeisyuList;
+                }
+                if (this.dlc === "なし") {
+                    rowList = rowList.filter(u => !u.isDlc);
                 }
             }
             else /*if (this.taisyou === "1ユニット×全兵種")*/ {
