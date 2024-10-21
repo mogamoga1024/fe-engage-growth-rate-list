@@ -1,6 +1,4 @@
 
-let hyoujiNaiyou = "成長率";
-
 const App = {
     data() {
         return {
@@ -8,6 +6,7 @@ const App = {
             taisyou: "全ユニット",
             unitName: "主人公",
             heisyuName: "すべて",
+            hyoujiNaiyou: "成長率",
             sortKoumoku: "",
             sortRule: "",
             result: []
@@ -27,6 +26,11 @@ const App = {
         // 初回検索
         this.search();
     },
+    computed: {
+        useSougouryoku() {
+            return this.taisyou !== '全ユニット' && this.hyoujiNaiyou === '上限値';
+        }
+    },
     methods: {
         onChangeTaisyou(e) {
             this.taisyou = e.target.value;
@@ -44,7 +48,7 @@ const App = {
             this.search();
         },
         onChangeHyoujiNaiyou(e) {
-            hyoujiNaiyou = e.target.value;
+            this.hyoujiNaiyou = e.target.value;
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
@@ -65,36 +69,33 @@ const App = {
             this.search();
         },
         search() {
-            let tmpUnitList = [];
+            let rowList = [];
 
-            // 兵種データをすべて表示する場合はユニットのように扱う
-            if (this.heisyuName === "すべて") {
-                tmpUnitList = senyouHeisyuList.concat(kihonHeisyuList);
+            // 対象
+            if (this.taisyou === "全ユニット") {
+                rowList = unitList;
             }
-            // すべてのユニットデータ取得
-            else if (this.unitName === "すべて") {
-                tmpUnitList = unitList;
-            }
-            // 個別のユニットデータ取得
-            else {
-                for (const unit of unitList) {
-                    if (unit.name === this.unitName) {
-                        tmpUnitList.push(unit);
-                        break;
-                    }
+            else if (this.taisyou === "全兵種") {
+                if (this.heisyuName === "すべて") {
+                    rowList = senyouHeisyuList.concat(kihonHeisyuList);
                 }
-                // TODO 兵種データ取得
+                else /*if (this.heisyuName === "専門兵種以外")*/ {
+                    rowList = kihonHeisyuList;
+                }
+            }
+            else /*if (this.taisyou === "1ユニット×全兵種")*/ {
+                // todo
             }
 
             // 表示用にデータを加工する
             const result = [];
-            for (const unit of tmpUnitList) {
+            for (const row of rowList) {
                 let data = null;
-                if (hyoujiNaiyou === "成長率") {
-                    data = {name: unit.name, ...unit.seityouritu};
+                if (this.hyoujiNaiyou === "成長率") {
+                    data = {name: row.name, ...row.seityouritu};
                 }
-                else if (hyoujiNaiyou === "上限値") {
-                    data = {name: unit.name, ...unit.jougenti};
+                else if (this.hyoujiNaiyou === "上限値") {
+                    data = {name: row.name, ...row.jougenti};
                 }
                 result.push(data);
             }
@@ -115,6 +116,57 @@ const App = {
                 });
             }
         },
+        // search() {
+        //     let tmpUnitList = [];
+
+        //     // 兵種データをすべて表示する場合はユニットのように扱う
+        //     if (this.heisyuName === "すべて") {
+        //         tmpUnitList = senyouHeisyuList.concat(kihonHeisyuList);
+        //     }
+        //     // すべてのユニットデータ取得
+        //     else if (this.unitName === "すべて") {
+        //         tmpUnitList = unitList;
+        //     }
+        //     // 個別のユニットデータ取得
+        //     else {
+        //         for (const unit of unitList) {
+        //             if (unit.name === this.unitName) {
+        //                 tmpUnitList.push(unit);
+        //                 break;
+        //             }
+        //         }
+        //         // TODO 兵種データ取得
+        //     }
+
+        //     // 表示用にデータを加工する
+        //     const result = [];
+        //     for (const unit of tmpUnitList) {
+        //         let data = null;
+        //         if (this.hyoujiNaiyou === "成長率") {
+        //             data = {name: unit.name, ...unit.seityouritu};
+        //         }
+        //         else if (this.hyoujiNaiyou === "上限値") {
+        //             data = {name: unit.name, ...unit.jougenti};
+        //         }
+        //         result.push(data);
+        //     }
+        //     if (this.sortKoumoku === "" || this.sortRule === "") {
+        //         this.result = result;
+        //     }
+        //     else {
+        //         this.result = result.sort((a, b) => {
+        //             if (this.sortRule === "昇順") {
+        //                 return a[this.sortKoumoku] - b[this.sortKoumoku];
+        //             }
+        //             else if (this.sortRule === "降順") {
+        //                 return b[this.sortKoumoku] - a[this.sortKoumoku];
+        //             }
+        //             else {
+        //                 return 0;
+        //             }
+        //         });
+        //     }
+        // },
     }
 };
 
