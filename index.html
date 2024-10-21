@@ -62,11 +62,11 @@
       <div v-if="result.length > 0">
         ヘッダーを押すとソートできます<br>
         <span v-show="useSougouryoku">
-          ※ 総合 = 力 + 魔力 + 技 + 速さ + 守備 + 魔防 + 幸運 + 体格
+          ※ 合計 = 力 + 魔力 + 技 + 速さ + 守備 + 魔防 + 幸運 + 体格
         </span>
         <table>
           <tr>
-            <th v-for="koumoku in ['名前', 'HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', useSougouryoku ? '総合' : '合計']"
+            <th v-for="koumoku in ['名前', 'HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
               @click="onClickKoumoku(koumoku)">
               {{koumoku + (sortKoumoku === koumoku ? (sortRule === "昇順" ? "↓" : (sortRule === "降順" ? "↑" : "")) : "")}}
             </th>
@@ -82,8 +82,7 @@
             <td>{{row["魔防"]}}</td>
             <td>{{row["幸運"]}}</td>
             <td>{{row["体格"]}}</td>
-            <td v-if="useSougouryoku">{{row["総合"]}}</td>
-            <td v-else>{{row["合計"]}}</td>
+            <td>{{row["合計"]}}</td>
           </tr>
         </table>
       </div>
