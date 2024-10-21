@@ -88,7 +88,7 @@ const App = {
                     rowList = rowList.filter(u => u.kuni !== "DLC");
                 }
             }
-            else /*if (this.taisyou === "全兵種" || this.taisyou === "1ユニット×全兵種")*/ {
+            else if (this.taisyou === "全兵種") {
                 if (this.heisyuName === "すべて") {
                     rowList = senyouHeisyuList.concat(kihonHeisyuList);
                 }
@@ -99,12 +99,17 @@ const App = {
                     rowList = rowList.filter(u => !u.isDlc);
                 }
             }
-            if (this.taisyou === "1ユニット×全兵種") {
+            else /*if (this.taisyou === "1ユニット×全兵種")*/ {
                 for (const unit of unitList) {
                     if (this.unitName === unit.name) {
                         targetUnit = unit;
                         break;
                     }
+                }
+                rowList = senyouHeisyuList.filter(h => h.unit === targetUnit.name);
+                rowList = rowList.concat(kihonHeisyuList);
+                if (this.dlc === "なし") {
+                    rowList = rowList.filter(u => !u.isDlc);
                 }
             }
 

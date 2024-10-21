@@ -380,7 +380,7 @@ const kihonHeisyuList = [
 const senyouHeisyuList = [
     {
         name: "神竜ノ王",
-        unit: "リュール",
+        unit: "主人公",
         isDlc: false,
         seityouritu: {HP: 10, 力: 10, 魔力: 0, 技: 10, 速さ: 15, 守備: 15, 魔防: 15, 幸運: 10, 体格: 5, 合計: 90},
         jougenti: {HP: 68, 力: 41, 魔力: 25, 技: 36, 速さ: 43, 守備: 35, 魔防: 25, 幸運: 35, 体格: 13, 移動: 5, 合計: 253},

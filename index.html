@@ -36,7 +36,7 @@
       </select>
     </div>
     <div class="option"
-      v-show="taisyou !== '全ユニット'">
+      v-show="taisyou === '全兵種'">
       <div class="option-name">兵種</div>
       <select :value="heisyuName" @change="onChangeHeisyu">
         <option value="すべて">すべて</option>
