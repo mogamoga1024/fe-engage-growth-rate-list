@@ -53,7 +53,10 @@
 
     <div id="result">
       <div v-if="result.length > 0">
-        ヘッダーを押すとソートできます
+        ヘッダーを押すとソートできます<br>
+        <span v-show="useSougouryoku">
+          ※ 総合 = 力 + 魔力 + 技 + 速さ + 守備 + 魔防 + 幸運 + 体格
+        </span>
         <table>
           <tr>
             <th v-for="koumoku in ['名前', 'HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', useSougouryoku ? '総合' : '合計']"
