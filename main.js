@@ -127,8 +127,15 @@ const App = {
                     data = {name: row.name, ...row.jougenti};
                 }
                 data = {name: row.name};
-                for (const koumoku of ["HP", "力", "魔力", "技", "速さ", "守備", "魔防", "幸運", "体格", "合計"]) {
-                    data[koumoku] = row[key][koumoku] + targetUnit[key][koumoku];
+                if (this.unitName === "ジャン") {
+                    for (const koumoku of ["HP", "力", "魔力", "技", "速さ", "守備", "魔防", "幸運", "体格", "合計"]) {
+                        data[koumoku] = row[key][koumoku] * 2 + targetUnit[key][koumoku];
+                    }
+                }
+                else {
+                    for (const koumoku of ["HP", "力", "魔力", "技", "速さ", "守備", "魔防", "幸運", "体格", "合計"]) {
+                        data[koumoku] = row[key][koumoku] + targetUnit[key][koumoku];
+                    }
                 }
                 result.push(data);
             }
