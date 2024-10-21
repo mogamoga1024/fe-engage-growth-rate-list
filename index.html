@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FEエンゲージ成長率一覧</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="vendor/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/viewport-extra@1.0.3/dist/viewport-extra.min.js"></script>
+  <script>new ViewportExtra(375)</script>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <h1>FEエンゲージ成長率一覧</h1>
+    <div class="option">
+      <div class="option-name">対象</div>
+      <select :value="taisyou" @change="onChangeTaisyou">
+        <option value="全ユニット">全ユニット</option>
+        <option value="全兵種">全兵種</option>
+        <option value="1ユニット×全兵種">1ユニット×全兵種</option>
+      </select>
+    </div>
+    <div class="option"
+      v-show="taisyou !== '全ユニット' && taisyou !== '全兵種'">
+      <div class="option-name">ユニット</div>
+      <select :value="unitName" @change="onChangeUnit">
+        <optgroup
+          v-for="(unitList, groupName) in unitGroups"
+          :label="groupName">
+          <option
+            v-for="unitName in unitList"
+            :value="unitName">
+            {{ unitName }}
+          </option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="option"
+      v-show="taisyou === '全兵種'">
+      <div class="option-name">兵種</div>
+      <select :value="heisyuName" @change="onChangeHeisyu">
+        <option value="すべて">すべて</option>
+        <option value="専用兵種以外">専用兵種以外</option>
+      </select>
+    </div>
+    <div class="option">
+      <div class="option-name">DLC</div>
+      <select :value="dlc" @change="onChangeDlc">
+        <option value="あり">あり</option>
+        <option value="なし">なし</option>
+      </select>
+    </div>
+    <div class="option">
+      <div class="option-name">表示内容</div>
+      <select :value="hyoujiNaiyou" @change="onChangeHyoujiNaiyou">
+        <option value="成長率">成長率</option>
+        <option value="上限値">上限値</option>
+      </select>
+    </div>
+
+    <div id="result">
+      <div v-if="result.length > 0">
+        ヘッダーを押すとソートできます<br>
+        <span v-show="useSougouryoku">
+          ※ 合計 = 力 + 魔力 + 技 + 速さ + 守備 + 魔防 + 幸運 + 体格
+        </span>
+        <table>
+          <tr>
+            <th v-for="koumoku in ['名前', 'HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
+              @click="onClickKoumoku(koumoku)">
+              {{koumoku + (sortKoumoku === koumoku ? (sortRule === "昇順" ? "↓" : (sortRule === "降順" ? "↑" : "")) : "")}}
+            </th>
+          </tr>
+          <tr v-for="row in result">
+            <td>{{row["name"]}}</td>
+            <td>{{row["HP"]}}</td>
+            <td>{{row["力"]}}</td>
+            <td>{{row["魔力"]}}</td>
+            <td>{{row["技"]}}</td>
+            <td>{{row["速さ"]}}</td>
+            <td>{{row["守備"]}}</td>
+            <td>{{row["魔防"]}}</td>
+            <td>{{row["幸運"]}}</td>
+            <td>{{row["体格"]}}</td>
+            <td>{{row["合計"]}}</td>
+          </tr>
+        </table>
+      </div>
+      <div v-else>
+        データがないです。
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
