@@ -3,9 +3,11 @@ const App = {
     data() {
         return {
             unitGroups: {},
+            heisyuNameList: [],
             taisyou: "全ユニット",
             unitName: "主人公",
-            heisyuName: "すべて",
+            heisyuName1: "すべて",
+            heisyuName2: "ソードマスター",
             dlc: "あり",
             hyoujiNaiyou: "成長率",
             sortKoumoku: "",
@@ -22,6 +24,10 @@ const App = {
                 this.unitGroups[groupName] = [];
             }
             this.unitGroups[groupName].push(unit.name);
+        }
+        // 基本兵種一覧
+        for (const heisyu of kihonHeisyuList) {
+            this.heisyuNameList.push(heisyu.name);
         }
 
         // 初回検索
@@ -43,8 +49,13 @@ const App = {
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
-        onChangeHeisyu(e) {
-            this.heisyuName = e.target.value;
+        onChangeHeisyu1(e) {
+            this.heisyuName1 = e.target.value;
+            this.sortKoumoku = this.sortRule = "";
+            this.search();
+        },
+        onChangeHeisyu2(e) {
+            this.heisyuName2 = e.target.value;
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
@@ -92,17 +103,17 @@ const App = {
                 }
             }
             else if (this.taisyou === "全兵種") {
-                if (this.heisyuName === "すべて") {
+                if (this.heisyuName1 === "すべて") {
                     rowList = senyouHeisyuList.concat(kihonHeisyuList);
                 }
-                else /*if (this.heisyuName === "専門兵種以外")*/ {
+                else /*if (this.heisyuName1 === "専門兵種以外")*/ {
                     rowList = kihonHeisyuList;
                 }
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);
                 }
             }
-            else /*if (this.taisyou === "1ユニット×全兵種")*/ {
+            else if (this.taisyou === "1ユニット×全兵種") {
                 for (const unit of unitList) {
                     if (this.unitName === unit.name) {
                         targetUnit = unit;
@@ -114,6 +125,9 @@ const App = {
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);
                 }
+            }
+            else /*if (this.taisyou === "1兵種×全ユニット")*/ {
+                // todo
             }
 
             // 表示用にデータを加工する

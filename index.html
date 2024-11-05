@@ -20,10 +20,11 @@
         <option value="全ユニット">全ユニット</option>
         <option value="全兵種">全兵種</option>
         <option value="1ユニット×全兵種">1ユニット×全兵種</option>
+        <option value="1兵種×全ユニット">1兵種×全ユニット</option>
       </select>
     </div>
     <div class="option"
-      v-show="taisyou !== '全ユニット' && taisyou !== '全兵種'">
+      v-show="taisyou === '1ユニット×全兵種'">
       <div class="option-name">ユニット</div>
       <select :value="unitName" @change="onChangeUnit">
         <optgroup
@@ -40,9 +41,20 @@
     <div class="option"
       v-show="taisyou === '全兵種'">
       <div class="option-name">兵種</div>
-      <select :value="heisyuName" @change="onChangeHeisyu">
+      <select :value="heisyuName1" @change="onChangeHeisyu1">
         <option value="すべて">すべて</option>
         <option value="専用兵種以外">専用兵種以外</option>
+      </select>
+    </div>
+    <div class="option"
+      v-show="taisyou === '1兵種×全ユニット'">
+      <div class="option-name">兵種</div>
+      <select :value="heisyuName2" @change="onChangeHeisyu2">
+        <option
+          v-for="heisyuName in heisyuNameList"
+          :value="heisyuName">
+          {{ heisyuName }}
+        </option>
       </select>
     </div>
     <div class="option">
