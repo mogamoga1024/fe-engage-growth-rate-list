@@ -156,12 +156,12 @@ const App = {
                     data = {name: row.name, ...row.jougenti};
                 }
                 data = {name: row.name};
-                if (this.taisyou === "1ユニット×全兵種" && this.unitName === "ジャン") {
+                if (this.taisyou === "1ユニット×全兵種" && this.unitName === "ジャン" && this.hyoujiNaiyou === "成長率") {
                     for (const koumoku of ["HP", "力", "魔力", "技", "速さ", "守備", "魔防", "幸運", "体格", "合計"]) {
                         data[koumoku] = row[key][koumoku] * 2 + alpha[key][koumoku];
                     }
                 }
-                else if (this.taisyou === "1兵種×全ユニット" && row.name === "ジャン") {
+                else if (this.taisyou === "1兵種×全ユニット" && row.name === "ジャン" && this.hyoujiNaiyou === "成長率") {
                     for (const koumoku of ["HP", "力", "魔力", "技", "速さ", "守備", "魔防", "幸運", "体格", "合計"]) {
                         data[koumoku] = row[key][koumoku] + alpha[key][koumoku] * 2;
                     }
