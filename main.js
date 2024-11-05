@@ -90,7 +90,7 @@ const App = {
         },
         search() {
             let rowList = [];
-            let targetUnit = {
+            let alpha = {
                 seityouritu: {HP: 0, 力: 0, 魔力: 0, 技: 0, 速さ: 0, 守備: 0, 魔防: 0, 幸運: 0, 体格: 0, 合計: 0},
                 jougenti: {HP: 0, 力: 0, 魔力: 0, 技: 0, 速さ: 0, 守備: 0, 魔防: 0, 幸運: 0, 体格: 0, 合計: 0},
             };
@@ -116,18 +116,27 @@ const App = {
             else if (this.taisyou === "1ユニット×全兵種") {
                 for (const unit of unitList) {
                     if (this.unitName === unit.name) {
-                        targetUnit = unit;
+                        alpha = unit;
                         break;
                     }
                 }
-                rowList = senyouHeisyuList.filter(h => h.unit === targetUnit.name);
+                rowList = senyouHeisyuList.filter(h => h.unit === alpha.name);
                 rowList = rowList.concat(kihonHeisyuList);
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);
                 }
             }
             else /*if (this.taisyou === "1兵種×全ユニット")*/ {
-                // todo
+                for (const heisyu of kihonHeisyuList) {
+                    if (this.heisyuName2 === heisyu.name) {
+                        alpha = heisyu;
+                        break;
+                    }
+                }
+                rowList = unitList;
+                if (this.dlc === "なし") {
+                    rowList = rowList.filter(u => u.kuni !== "DLC");
+                }
             }
 
             // 表示用にデータを加工する
@@ -146,12 +155,12 @@ const App = {
                 data = {name: row.name};
                 if (this.unitName === "ジャン") {
                     for (const koumoku of ["HP", "力", "魔力", "技", "速さ", "守備", "魔防", "幸運", "体格", "合計"]) {
-                        data[koumoku] = row[key][koumoku] * 2 + targetUnit[key][koumoku];
+                        data[koumoku] = row[key][koumoku] * 2 + alpha[key][koumoku];
                     }
                 }
                 else {
                     for (const koumoku of ["HP", "力", "魔力", "技", "速さ", "守備", "魔防", "幸運", "体格", "合計"]) {
-                        data[koumoku] = row[key][koumoku] + targetUnit[key][koumoku];
+                        data[koumoku] = row[key][koumoku] + alpha[key][koumoku];
                     }
                 }
                 result.push(data);
