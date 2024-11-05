@@ -52,8 +52,8 @@
       <select :value="heisyuName2" @change="onChangeHeisyu2">
         <option
           v-for="heisyuName in heisyuNameList"
-          :value="heisyuName">
-          {{ heisyuName }}
+          :value="heisyuName.value">
+          {{ heisyuName.display }}
         </option>
       </select>
     </div>

@@ -27,7 +27,10 @@ const App = {
         }
         // 基本兵種一覧
         for (const heisyu of kihonHeisyuList) {
-            this.heisyuNameList.push(heisyu.name);
+            this.heisyuNameList.push({
+                value: heisyu.name,
+                display: heisyu.name + (heisyu.isDlc ? "(DLC)" : "")
+            });
         }
 
         // 初回検索
