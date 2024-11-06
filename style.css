@@ -78,3 +78,7 @@ td:not(:first-of-type) {
   background-color: #eaf6f8;
   text-align: right;
 }
+
+td.selected-cell {
+  background-color: #cbe9ee;
+}

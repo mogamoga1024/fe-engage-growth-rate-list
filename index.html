@@ -86,9 +86,10 @@
               {{koumoku + (sortKoumoku === koumoku ? (sortRule === "昇順" ? "↓" : (sortRule === "降順" ? "↑" : "")) : "")}}
             </th>
           </tr>
-          <tr v-for="row in result">
+          <tr v-for="(row, rowIdx) in result">
             <td>{{row["name"]}}</td>
-            <td v-for="prop in ['HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
+            <td v-for="(prop, colIdx) in ['HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
+              :class="{'selected-cell': rowIdx + 1 === selectedRow || colIdx + 1 === selectedCol}"
               @click="onClickCell">
               {{row[prop]}}
             </td>

@@ -12,6 +12,8 @@ const App = {
             hyoujiNaiyou: "成長率",
             sortKoumoku: "",
             sortRule: "",
+            selectedRow: -1,
+            selectedCol: -1,
             result: []
         };
     },
@@ -89,11 +91,13 @@ const App = {
             this.search();
         },
         onClickCell(e) {
-            const row = e.target.parentNode.sectionRowIndex;
-            const col = e.target.cellIndex;
-            console.log(row, col);
+            this.selectedRow = e.target.parentNode.sectionRowIndex;
+            this.selectedCol = e.target.cellIndex;
         },
         search() {
+            this.selectedRow = -1;
+            this.selectedCol = -1;
+
             let rowList = [];
             let alpha = {
                 seityouritu: {HP: 0, 力: 0, 魔力: 0, 技: 0, 速さ: 0, 守備: 0, 魔防: 0, 幸運: 0, 体格: 0, 合計: 0},
