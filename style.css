@@ -80,5 +80,5 @@ td:not(:first-of-type) {
 }
 
 td.selected-cell {
-  background-color: #cbe9ee;
+  background-color: #cbe9ee !important;
 }
