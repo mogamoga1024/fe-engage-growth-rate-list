@@ -80,23 +80,18 @@
         </span>
         <table>
           <tr>
-            <th v-for="koumoku in ['名前', 'HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
+            <th>名前</th>
+            <th v-for="koumoku in ['HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
               @click="onClickKoumoku(koumoku)">
               {{koumoku + (sortKoumoku === koumoku ? (sortRule === "昇順" ? "↓" : (sortRule === "降順" ? "↑" : "")) : "")}}
             </th>
           </tr>
           <tr v-for="row in result">
             <td>{{row["name"]}}</td>
-            <td>{{row["HP"]}}</td>
-            <td>{{row["力"]}}</td>
-            <td>{{row["魔力"]}}</td>
-            <td>{{row["技"]}}</td>
-            <td>{{row["速さ"]}}</td>
-            <td>{{row["守備"]}}</td>
-            <td>{{row["魔防"]}}</td>
-            <td>{{row["幸運"]}}</td>
-            <td>{{row["体格"]}}</td>
-            <td>{{row["合計"]}}</td>
+            <td v-for="prop in ['HP', '力', '魔力', '技', '速さ', '守備', '魔防', '幸運', '体格', '合計']"
+              @click="onClickCell">
+              {{row[prop]}}
+            </td>
           </tr>
         </table>
       </div>

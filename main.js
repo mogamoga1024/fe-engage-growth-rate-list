@@ -73,9 +73,6 @@ const App = {
             this.search();
         },
         onClickKoumoku(koumoku) {
-            if (koumoku === "名前") {
-                return;
-            }
             if (this.sortKoumoku !== koumoku) {
                 this.sortRule = "";
             }
@@ -90,6 +87,11 @@ const App = {
                 this.sortRule = "";
             }
             this.search();
+        },
+        onClickCell(e) {
+            const row = e.target.parentNode.sectionRowIndex;
+            const col = e.target.cellIndex;
+            console.log(row, col);
         },
         search() {
             let rowList = [];
