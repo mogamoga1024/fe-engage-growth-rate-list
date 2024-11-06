@@ -91,8 +91,16 @@ const App = {
             this.search();
         },
         onClickCell(e) {
-            this.selectedRow = e.target.parentNode.sectionRowIndex;
-            this.selectedCol = e.target.cellIndex;
+            const row = e.target.parentNode.sectionRowIndex;
+            const col = e.target.cellIndex;
+            if (this.selectedRow === row && this.selectedCol === col) {
+                this.selectedRow = -1;
+                this.selectedCol = -1;
+            }
+            else {
+                this.selectedRow = row;
+                this.selectedCol = col;
+            }
         },
         search() {
             this.selectedRow = -1;
