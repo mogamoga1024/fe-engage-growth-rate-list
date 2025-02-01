@@ -134,7 +134,7 @@ const App = {
             }
             else if (this.taisyou === "全兵種") {
                 if (this.heisyuName1 === "すべて") {
-                    rowList = senyouHeisyuList.concat(joukyuHeisyuList);
+                    rowList = senyouJoukyuHeisyuList.concat(joukyuHeisyuList);
                 }
                 else /*if (this.heisyuName1 === "専門兵種以外")*/ {
                     rowList = joukyuHeisyuList;
@@ -150,7 +150,7 @@ const App = {
                         break;
                     }
                 }
-                rowList = senyouHeisyuList.filter(h => h.unit === alpha.name);
+                rowList = senyouJoukyuHeisyuList.filter(h => h.unit === alpha.name);
                 rowList = rowList.concat(joukyuHeisyuList);
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);

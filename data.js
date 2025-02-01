@@ -378,7 +378,7 @@ const thief = {
     jougenti: {HP: 60, 力: 43, 魔力: 22, 技: 51, 速さ: 42, 守備: 33, 魔防: 23, 幸運: 30, 体格: 13, 移動: 5, 合計: 257},
 };
 
-const senyouHeisyuList = [
+const senyouJoukyuHeisyuList = [
     {
         name: "神竜ノ王",
         unit: "主人公",
