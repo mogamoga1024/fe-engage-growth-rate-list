@@ -3,6 +3,10 @@ const App = {
     data() {
         return {
             unitGroups: {},
+            needKakyu: false,
+            needJoukyu: true,
+            needSenyou: true,
+            needThief: true,
             heisyuNameList: [],
             taisyou: "全ユニット",
             unitName: "主人公",
