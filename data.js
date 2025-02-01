@@ -248,7 +248,7 @@ const unitList = [
     },
 ];
 
-const kihonHeisyuList = [
+const joukyuHeisyuList = [
     {
         name: "ソードマスター",
         isDlc: false,
@@ -358,12 +358,6 @@ const kihonHeisyuList = [
         jougenti: {HP: 55, 力: 28, 魔力: 45, 技: 31, 速さ: 32, 守備: 20, 魔防: 48, 幸運: 38, 体格: 13, 移動: 5, 合計: 255},
     },
     {
-        name: "シーフ",
-        isDlc: false,
-        seityouritu: {HP: 5, 力: 10, 魔力: 0, 技: 20, 速さ: 15, 守備: 15, 魔防: 5, 幸運: 15, 体格: 0, 合計: 85},
-        jougenti: {HP: 60, 力: 43, 魔力: 22, 技: 51, 速さ: 42, 守備: 33, 魔防: 23, 幸運: 30, 体格: 13, 移動: 5, 合計: 257},
-    },
-    {
         name: "エンチャント",
         isDlc: true,
         seityouritu: {HP: 5, 力: 15, 魔力: 15, 技: 15, 速さ: 10, 守備: 5, 魔防: 5, 幸運: 15, 体格: 5, 合計: 90},
@@ -376,6 +370,13 @@ const kihonHeisyuList = [
         jougenti: {HP: 76, 力: 45, 魔力: 23, 技: 43, 速さ: 23, 守備: 49, 魔防: 24, 幸運: 31, 体格: 18, 移動: 4, 合計: 256},
     },
 ];
+
+const thief = {
+    name: "シーフ",
+    isDlc: false,
+    seityouritu: {HP: 5, 力: 10, 魔力: 0, 技: 20, 速さ: 15, 守備: 15, 魔防: 5, 幸運: 15, 体格: 0, 合計: 85},
+    jougenti: {HP: 60, 力: 43, 魔力: 22, 技: 51, 速さ: 42, 守備: 33, 魔防: 23, 幸運: 30, 体格: 13, 移動: 5, 合計: 257},
+};
 
 const senyouHeisyuList = [
     {

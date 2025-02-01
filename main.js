@@ -27,14 +27,23 @@ const App = {
             }
             this.unitGroups[groupName].push(unit.name);
         }
-        // 基本兵種一覧
-        for (const heisyu of kihonHeisyuList) {
+        // 兵種一覧
+        let heisyuList = []; 
+        // todo
+        heisyuList = heisyuList.concat(joukyuHeisyuList);
+        heisyuList.push(thief);
+        heisyuList.sort((a, b) => {
+            if (a.isDlc && !b.isDlc) return 1;
+            else if (!a.isDlc && b.isDlc) return -1;
+            return 0;
+        });
+        for (const heisyu of heisyuList) {
             this.heisyuNameList.push({
                 value: heisyu.name,
                 display: heisyu.name + (heisyu.isDlc ? "(DLC)" : "")
             });
         }
-
+        
         // 初回検索
         this.search();
     },
@@ -121,10 +130,10 @@ const App = {
             }
             else if (this.taisyou === "全兵種") {
                 if (this.heisyuName1 === "すべて") {
-                    rowList = senyouHeisyuList.concat(kihonHeisyuList);
+                    rowList = senyouHeisyuList.concat(joukyuHeisyuList);
                 }
                 else /*if (this.heisyuName1 === "専門兵種以外")*/ {
-                    rowList = kihonHeisyuList;
+                    rowList = joukyuHeisyuList;
                 }
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);
@@ -138,13 +147,13 @@ const App = {
                     }
                 }
                 rowList = senyouHeisyuList.filter(h => h.unit === alpha.name);
-                rowList = rowList.concat(kihonHeisyuList);
+                rowList = rowList.concat(joukyuHeisyuList);
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);
                 }
             }
             else /*if (this.taisyou === "1兵種×全ユニット")*/ {
-                for (const heisyu of kihonHeisyuList) {
+                for (const heisyu of joukyuHeisyuList) {
                     if (this.heisyuName2 === heisyu.name) {
                         alpha = heisyu;
                         break;
