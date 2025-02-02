@@ -5,8 +5,8 @@ const App = {
             unitGroups: {},
             needKakyu: false,
             needJoukyu: true,
-            needSenyou: true,
             needThief: true,
+            needSenyou: true,
             heisyuNameList: [],
             taisyou: "全ユニット",
             unitName: "主人公",
@@ -65,6 +65,15 @@ const App = {
             this.unitName = e.target.value;
             this.sortKoumoku = this.sortRule = "";
             this.search();
+        },
+        onChangeNeedKakyu(e) {
+            // todo
+        },
+        onChangeNeedJoukyu(e) {
+            // todo
+        },
+        onChangeNeedThief(e) {
+            // todo
         },
         onChangeNeedSenyou(e) {
             this.needSenyou = e.target.value === "true";

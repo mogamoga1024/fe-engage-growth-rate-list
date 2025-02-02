@@ -39,6 +39,24 @@
       </select>
     </div>
     <div class="option"
+      v-show="taisyou !== '全ユニット'">
+      <div class="option-name">兵種区分</div>
+      <div class="chk-list">
+        <div class="chk-container">
+          <input type="checkbox" id="chk-need-kakyu" :checked="needKakyu" @change="onChangeNeedKakyu">
+          <label for="chk-need-kakyu">下級</label>
+        </div>
+        <div class="chk-container">
+          <input type="checkbox" id="chk-need-joukyu" :checked="needJoukyu" @change="onChangeNeedJoukyu">
+          <label for="chk-need-joukyu">上級</label>
+        </div>
+        <div class="chk-container">
+          <input type="checkbox" id="chk-need-thief" :checked="needThief" @change="onChangeNeedThief">
+          <label for="chk-need-thief">シーフ</label>
+        </div>
+      </div>
+    </div>
+    <div class="option"
       v-show="taisyou === '全兵種'">
       <div class="option-name">専用兵種</div>
       <select :value="needSenyou" @change="onChangeNeedSenyou">
