@@ -40,16 +40,16 @@
     </div>
     <div class="option"
       v-show="taisyou === '全兵種'">
-      <div class="option-name">兵種</div>
-      <select :value="heisyuName1" @change="onChangeHeisyu1">
-        <option value="すべて">すべて</option>
-        <option value="専用兵種以外">専用兵種以外</option>
+      <div class="option-name">専用兵種</div>
+      <select :value="needSenyou" @change="onChangeNeedSenyou">
+        <option value="true">含める</option>
+        <option value="false">含めない</option>
       </select>
     </div>
     <div class="option"
       v-show="taisyou === '1兵種×全ユニット'">
       <div class="option-name">兵種</div>
-      <select :value="heisyuName2" @change="onChangeHeisyu2">
+      <select :value="heisyuName" @change="onChangeHeisyu">
         <option
           v-for="heisyuName in heisyuNameList"
           :value="heisyuName.value">

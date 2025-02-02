@@ -10,8 +10,7 @@ const App = {
             heisyuNameList: [],
             taisyou: "全ユニット",
             unitName: "主人公",
-            heisyuName1: "すべて",
-            heisyuName2: "ソードマスター",
+            heisyuName: "ソードマスター",
             dlc: "あり",
             hyoujiNaiyou: "成長率",
             sortKoumoku: "",
@@ -67,13 +66,13 @@ const App = {
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
-        onChangeHeisyu1(e) {
-            this.heisyuName1 = e.target.value;
+        onChangeNeedSenyou(e) {
+            this.needSenyou = e.target.value === "true";
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
-        onChangeHeisyu2(e) {
-            this.heisyuName2 = e.target.value;
+        onChangeHeisyu(e) {
+            this.heisyuName = e.target.value;
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
@@ -133,10 +132,10 @@ const App = {
                 }
             }
             else if (this.taisyou === "全兵種") {
-                if (this.heisyuName1 === "すべて") {
+                if (this.needSenyou) {
                     rowList = senyouJoukyuHeisyuList.concat(joukyuHeisyuList);
                 }
-                else /*if (this.heisyuName1 === "専門兵種以外")*/ {
+                else {
                     rowList = joukyuHeisyuList;
                 }
                 if (this.dlc === "なし") {
@@ -158,7 +157,7 @@ const App = {
             }
             else /*if (this.taisyou === "1兵種×全ユニット")*/ {
                 for (const heisyu of joukyuHeisyuList) {
-                    if (this.heisyuName2 === heisyu.name) {
+                    if (this.heisyuName === heisyu.name) {
                         alpha = heisyu;
                         break;
                     }
