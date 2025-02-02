@@ -3,14 +3,12 @@ const App = {
     data() {
         return {
             unitGroups: {},
-            needKakyu: false,
-            needJoukyu: true,
-            needThief: true,
+            heisyuKbn: "上級",
             needSenyou: true,
             heisyuNameList: [],
             taisyou: "全ユニット",
             unitName: "主人公",
-            heisyuName: "ソードマスター",
+            heisyuName: joukyuHeisyuList[0].name,
             dlc: "あり",
             hyoujiNaiyou: "成長率",
             sortKoumoku: "",
@@ -51,20 +49,8 @@ const App = {
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
-        onChangeNeedKakyu(e) {
-            this.needKakyu = e.target.checked;
-            this.setupHeisyuNameList();
-            this.sortKoumoku = this.sortRule = "";
-            this.search();
-        },
-        onChangeNeedJoukyu(e) {
-            this.needJoukyu = e.target.checked;
-            this.setupHeisyuNameList();
-            this.sortKoumoku = this.sortRule = "";
-            this.search();
-        },
-        onChangeNeedThief(e) {
-            this.needThief = e.target.checked;
+        onChangeHeisyuKbn(e) {
+            this.heisyuKbn = e.target.value;
             this.setupHeisyuNameList();
             this.sortKoumoku = this.sortRule = "";
             this.search();
@@ -121,10 +107,12 @@ const App = {
         setupHeisyuNameList() {
             let heisyuList = []; 
             
-            if (this.needKakyu) {
+            if (this.heisyuKbn === "下級") {
+                this.heisyuName = kakyuHeisyuList[0].name;
                 heisyuList = heisyuList.concat(kakyuHeisyuList);
             }
-            if (this.needJoukyu) {
+            else /*if (this.heisyuKbn === "上級")*/ {
+                this.heisyuName = joukyuHeisyuList[0].name;
                 heisyuList = heisyuList.concat(joukyuHeisyuList);
             }
             heisyuList.push(thief);

@@ -21,20 +21,6 @@
   width: 80px;
 }
 
-.chk-list {
-  display: flex;
-  align-items: center;
-}
-
-.chk-container {
-  display: flex;
-  align-items: center;
-}
-
-.chk-container:not(:first-of-type) {
-  margin-left: 4px;
-}
-
 #result {
   margin-top: 16px;
 }
