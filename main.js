@@ -31,22 +31,7 @@ const App = {
             this.unitGroups[groupName].push(unit.name);
         }
         // 兵種一覧
-        let heisyuList = []; 
-        // todo
-        heisyuList = heisyuList.concat(joukyuHeisyuList);
-        heisyuList.push(thief);
-        heisyuList.sort((a, b) => {
-            if (a.isDlc && !b.isDlc) return 1;
-            else if (!a.isDlc && b.isDlc) return -1;
-            return 0;
-        });
-        for (const heisyu of heisyuList) {
-            this.heisyuNameList.push({
-                value: heisyu.name,
-                display: heisyu.name + (heisyu.isDlc ? "(DLC)" : "")
-            });
-        }
-        
+        this.setupHeisyuNameList();
         // 初回検索
         this.search();
     },
@@ -68,16 +53,19 @@ const App = {
         },
         onChangeNeedKakyu(e) {
             this.needKakyu = e.target.checked;
+            this.setupHeisyuNameList();
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
         onChangeNeedJoukyu(e) {
             this.needJoukyu = e.target.checked;
+            this.setupHeisyuNameList();
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
         onChangeNeedThief(e) {
             this.needThief = e.target.checked;
+            this.setupHeisyuNameList();
             this.sortKoumoku = this.sortRule = "";
             this.search();
         },
@@ -128,6 +116,33 @@ const App = {
                 this.selectedRow = row;
                 this.selectedCol = col;
             }
+        },
+
+        setupHeisyuNameList() {
+            let heisyuList = []; 
+            
+            if (this.needKakyu) {
+                heisyuList = heisyuList.concat(kakyuHeisyuList);
+            }
+            if (this.needJoukyu) {
+                heisyuList = heisyuList.concat(joukyuHeisyuList);
+            }
+            heisyuList.push(thief);
+
+            heisyuList.sort((a, b) => {
+                if (a.isDlc && !b.isDlc) return 1;
+                else if (!a.isDlc && b.isDlc) return -1;
+                return 0;
+            });
+
+            const heisyuNameList = [];
+            for (const heisyu of heisyuList) {
+                heisyuNameList.push({
+                    value: heisyu.name,
+                    display: heisyu.name + (heisyu.isDlc ? "(DLC)" : "")
+                });
+            }
+            this.heisyuNameList = heisyuNameList;
         },
         search() {
             this.selectedRow = -1;
