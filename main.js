@@ -4,7 +4,7 @@ const App = {
         return {
             unitGroups: {},
             heisyuKbn: "上級",
-            needSenyou: true,
+            needSenyou: false,
             heisyuNameList: [],
             taisyou: "全ユニット",
             unitName: "主人公",
@@ -150,11 +150,21 @@ const App = {
                 }
             }
             else if (this.taisyou === "全兵種") {
-                if (this.needSenyou) {
-                    rowList = senyouJoukyuHeisyuList.concat(joukyuHeisyuList);
+                if (this.heisyuKbn === "下級") {
+                    if (this.needSenyou) {
+                        rowList = senyouKakyuHeisyuList.concat(kakyuHeisyuList);
+                    }
+                    else {
+                        rowList = kakyuHeisyuList;
+                    }
                 }
-                else {
-                    rowList = joukyuHeisyuList;
+                else /*if (this.heisyuKbn === "上級")*/ {
+                    if (this.needSenyou) {
+                        rowList = senyouJoukyuHeisyuList.concat(joukyuHeisyuList);
+                    }
+                    else {
+                        rowList = joukyuHeisyuList;
+                    }
                 }
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);
