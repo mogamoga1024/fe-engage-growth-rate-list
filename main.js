@@ -67,13 +67,19 @@ const App = {
             this.search();
         },
         onChangeNeedKakyu(e) {
-            // todo
+            this.needKakyu = e.target.checked;
+            this.sortKoumoku = this.sortRule = "";
+            this.search();
         },
         onChangeNeedJoukyu(e) {
-            // todo
+            this.needJoukyu = e.target.checked;
+            this.sortKoumoku = this.sortRule = "";
+            this.search();
         },
         onChangeNeedThief(e) {
-            // todo
+            this.needThief = e.target.checked;
+            this.sortKoumoku = this.sortRule = "";
+            this.search();
         },
         onChangeNeedSenyou(e) {
             this.needSenyou = e.target.value === "true";
