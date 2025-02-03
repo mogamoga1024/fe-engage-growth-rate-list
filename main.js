@@ -170,7 +170,7 @@ const App = {
                         rowList = senyouKakyuHeisyuList.concat(kakyuHeisyuList);
                     }
                     else {
-                        rowList = kakyuHeisyuList;
+                        rowList = Array.from(kakyuHeisyuList);
                     }
                 }
                 else /*if (this.heisyuKbn === "上級")*/ {
@@ -178,9 +178,10 @@ const App = {
                         rowList = senyouJoukyuHeisyuList.concat(joukyuHeisyuList);
                     }
                     else {
-                        rowList = joukyuHeisyuList;
+                        rowList = Array.from(joukyuHeisyuList);
                     }
                 }
+                rowList.push(thief);
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);
                 }
@@ -200,6 +201,7 @@ const App = {
                     rowList = senyouJoukyuHeisyuList.filter(h => h.unit === alpha.name);
                     rowList = rowList.concat(joukyuHeisyuList);
                 }
+                rowList.push(thief);
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);
                 }
