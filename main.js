@@ -209,11 +209,12 @@ const App = {
             else /*if (this.taisyou === "1兵種×全ユニット")*/ {
                 let heisyuList = [];
                 if (this.heisyuKbn === "下級") {
-                    heisyuList = kakyuHeisyuList;
+                    heisyuList = Array.from(kakyuHeisyuList);
                 }
                 else /*if (this.heisyuKbn === "上級")*/ {
-                    heisyuList = joukyuHeisyuList;
+                    heisyuList = Array.from(joukyuHeisyuList);
                 }
+                heisyuList.push(thief);
                 for (const heisyu of heisyuList) {
                     if (this.heisyuName === heisyu.name) {
                         alpha = heisyu;
