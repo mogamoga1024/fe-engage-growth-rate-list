@@ -177,8 +177,14 @@ const App = {
                         break;
                     }
                 }
-                rowList = senyouJoukyuHeisyuList.filter(h => h.unit === alpha.name);
-                rowList = rowList.concat(joukyuHeisyuList);
+                if (this.heisyuKbn === "下級") {
+                    rowList = senyouKakyuHeisyuList.filter(h => h.unit === alpha.name);
+                    rowList = rowList.concat(kakyuHeisyuList);
+                }
+                else /*if (this.heisyuKbn === "上級")*/ {
+                    rowList = senyouJoukyuHeisyuList.filter(h => h.unit === alpha.name);
+                    rowList = rowList.concat(joukyuHeisyuList);
+                }
                 if (this.dlc === "なし") {
                     rowList = rowList.filter(u => !u.isDlc);
                 }
