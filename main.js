@@ -42,6 +42,7 @@ const App = {
         onChangeTaisyou(e) {
             this.taisyou = e.target.value;
             this.sortKoumoku = this.sortRule = "";
+            this.updateHeisyuName();
             this.search();
         },
         onChangeUnit(e) {
@@ -108,11 +109,9 @@ const App = {
             let heisyuList = []; 
             
             if (this.heisyuKbn === "下級") {
-                this.heisyuName = kakyuHeisyuList[0].name;
                 heisyuList = heisyuList.concat(kakyuHeisyuList);
             }
             else /*if (this.heisyuKbn === "上級")*/ {
-                this.heisyuName = joukyuHeisyuList[0].name;
                 heisyuList = heisyuList.concat(joukyuHeisyuList);
             }
             heisyuList.push(thief);
@@ -131,6 +130,22 @@ const App = {
                 });
             }
             this.heisyuNameList = heisyuNameList;
+
+            this.updateHeisyuName();
+        },
+        updateHeisyuName() {
+            if (this.taisyou === "1兵種×全ユニット") {
+                if (this.heisyuKbn === "下級") {
+                    if (kakyuHeisyuList.every(h => h.name !== this.heisyuName)) {
+                        this.heisyuName = kakyuHeisyuList[0].name;
+                    }
+                }
+                else /*if (this.heisyuKbn === "上級")*/ {
+                    if (joukyuHeisyuList.every(h => h.name !== this.heisyuName)) {
+                        this.heisyuName = joukyuHeisyuList[0].name;
+                    }
+                }
+            }
         },
         search() {
             this.selectedRow = -1;
