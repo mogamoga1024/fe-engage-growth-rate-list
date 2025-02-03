@@ -135,7 +135,10 @@ const App = {
         },
         updateHeisyuName() {
             if (this.taisyou === "1兵種×全ユニット") {
-                if (this.heisyuKbn === "下級") {
+                if (this.heisyuName === thief.name) {
+                    // 何もしない
+                }
+                else if (this.heisyuKbn === "下級") {
                     if (kakyuHeisyuList.every(h => h.name !== this.heisyuName)) {
                         this.heisyuName = kakyuHeisyuList[0].name;
                     }
