@@ -190,7 +190,14 @@ const App = {
                 }
             }
             else /*if (this.taisyou === "1兵種×全ユニット")*/ {
-                for (const heisyu of joukyuHeisyuList) {
+                let heisyuList = [];
+                if (this.heisyuKbn === "下級") {
+                    heisyuList = kakyuHeisyuList;
+                }
+                else /*if (this.heisyuKbn === "上級")*/ {
+                    heisyuList = joukyuHeisyuList;
+                }
+                for (const heisyu of heisyuList) {
                     if (this.heisyuName === heisyu.name) {
                         alpha = heisyu;
                         break;
